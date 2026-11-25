@@ -1,0 +1,3585 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Independent workforce explorer, synthetic data; native Vega signals and transforms.",
+  "width": 914,
+  "height": 620,
+  "padding": 8,
+  "autosize": "none",
+  "background": "#FFFFFF",
+  "signals": [
+    {
+      "name": "month",
+      "value": 6,
+      "on": [
+        {
+          "events": "@monthChip:click, @monthLabel:click",
+          "update": "datum.month"
+        }
+      ]
+    },
+    {
+      "name": "scenario",
+      "value": "budget",
+      "on": [
+        {
+          "events": "@scenarioChip:click, @scenarioLabel:click",
+          "update": "datum.key"
+        }
+      ]
+    },
+    {
+      "name": "expanded",
+      "value": "OPS",
+      "on": [
+        {
+          "events": "@toggleHit:click",
+          "update": "expanded===datum.id?'':datum.id"
+        }
+      ]
+    },
+    {
+      "name": "selected",
+      "value": "ALL",
+      "on": [
+        {
+          "events": "@rowHit:click",
+          "update": "selected===datum.id?'ALL':datum.id"
+        },
+        {
+          "events": "@reset:click",
+          "update": "'ALL'"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "dataset",
+      "values": [
+        {
+          "month": 1,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 332,
+          "budget": 325,
+          "forecast": 337
+        },
+        {
+          "month": 1,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 165,
+          "budget": 168,
+          "forecast": 173
+        },
+        {
+          "month": 1,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 94,
+          "budget": 93,
+          "forecast": 98
+        },
+        {
+          "month": 1,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 73,
+          "budget": 64,
+          "forecast": 66
+        },
+        {
+          "month": 1,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 194,
+          "budget": 176,
+          "forecast": 197
+        },
+        {
+          "month": 1,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 61,
+          "budget": 48,
+          "forecast": 55
+        },
+        {
+          "month": 1,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 91,
+          "budget": 85,
+          "forecast": 92
+        },
+        {
+          "month": 1,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 42,
+          "budget": 43,
+          "forecast": 50
+        },
+        {
+          "month": 1,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 239,
+          "budget": 234,
+          "forecast": 237
+        },
+        {
+          "month": 1,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 111,
+          "budget": 115,
+          "forecast": 118
+        },
+        {
+          "month": 1,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 87,
+          "budget": 76,
+          "forecast": 81
+        },
+        {
+          "month": 1,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 41,
+          "budget": 43,
+          "forecast": 38
+        },
+        {
+          "month": 1,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 102,
+          "budget": 102,
+          "forecast": 106
+        },
+        {
+          "month": 1,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 38,
+          "budget": 45,
+          "forecast": 44
+        },
+        {
+          "month": 1,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 39,
+          "budget": 36,
+          "forecast": 39
+        },
+        {
+          "month": 1,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 25,
+          "budget": 21,
+          "forecast": 23
+        },
+        {
+          "month": 1,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 867,
+          "budget": 837,
+          "forecast": 877
+        },
+        {
+          "month": 2,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 335,
+          "budget": 327,
+          "forecast": 339
+        },
+        {
+          "month": 2,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 175,
+          "budget": 168,
+          "forecast": 175
+        },
+        {
+          "month": 2,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 102,
+          "budget": 97,
+          "forecast": 102
+        },
+        {
+          "month": 2,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 58,
+          "budget": 62,
+          "forecast": 62
+        },
+        {
+          "month": 2,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 168,
+          "budget": 178,
+          "forecast": 172
+        },
+        {
+          "month": 2,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 43,
+          "budget": 51,
+          "forecast": 51
+        },
+        {
+          "month": 2,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 75,
+          "budget": 84,
+          "forecast": 79
+        },
+        {
+          "month": 2,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 50,
+          "budget": 43,
+          "forecast": 42
+        },
+        {
+          "month": 2,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 256,
+          "budget": 236,
+          "forecast": 242
+        },
+        {
+          "month": 2,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 125,
+          "budget": 114,
+          "forecast": 121
+        },
+        {
+          "month": 2,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 87,
+          "budget": 78,
+          "forecast": 79
+        },
+        {
+          "month": 2,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 44,
+          "budget": 44,
+          "forecast": 42
+        },
+        {
+          "month": 2,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 102,
+          "budget": 101,
+          "forecast": 104
+        },
+        {
+          "month": 2,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 46,
+          "budget": 42,
+          "forecast": 49
+        },
+        {
+          "month": 2,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 41,
+          "budget": 36,
+          "forecast": 34
+        },
+        {
+          "month": 2,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 15,
+          "budget": 23,
+          "forecast": 21
+        },
+        {
+          "month": 2,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 861,
+          "budget": 842,
+          "forecast": 857
+        },
+        {
+          "month": 3,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 333,
+          "budget": 332,
+          "forecast": 326
+        },
+        {
+          "month": 3,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 173,
+          "budget": 171,
+          "forecast": 168
+        },
+        {
+          "month": 3,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 94,
+          "budget": 97,
+          "forecast": 99
+        },
+        {
+          "month": 3,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 66,
+          "budget": 64,
+          "forecast": 59
+        },
+        {
+          "month": 3,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 188,
+          "budget": 182,
+          "forecast": 188
+        },
+        {
+          "month": 3,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 50,
+          "budget": 51,
+          "forecast": 55
+        },
+        {
+          "month": 3,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 83,
+          "budget": 83,
+          "forecast": 85
+        },
+        {
+          "month": 3,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 55,
+          "budget": 48,
+          "forecast": 48
+        },
+        {
+          "month": 3,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 247,
+          "budget": 234,
+          "forecast": 245
+        },
+        {
+          "month": 3,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 114,
+          "budget": 113,
+          "forecast": 118
+        },
+        {
+          "month": 3,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 88,
+          "budget": 79,
+          "forecast": 86
+        },
+        {
+          "month": 3,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 45,
+          "budget": 42,
+          "forecast": 41
+        },
+        {
+          "month": 3,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 103,
+          "budget": 105,
+          "forecast": 105
+        },
+        {
+          "month": 3,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 53,
+          "budget": 45,
+          "forecast": 45
+        },
+        {
+          "month": 3,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 37,
+          "budget": 39,
+          "forecast": 43
+        },
+        {
+          "month": 3,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 13,
+          "budget": 21,
+          "forecast": 17
+        },
+        {
+          "month": 3,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 871,
+          "budget": 853,
+          "forecast": 864
+        },
+        {
+          "month": 4,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 333,
+          "budget": 333,
+          "forecast": 333
+        },
+        {
+          "month": 4,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 171,
+          "budget": 173,
+          "forecast": 172
+        },
+        {
+          "month": 4,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 109,
+          "budget": 98,
+          "forecast": 101
+        },
+        {
+          "month": 4,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 53,
+          "budget": 62,
+          "forecast": 60
+        },
+        {
+          "month": 4,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 175,
+          "budget": 186,
+          "forecast": 184
+        },
+        {
+          "month": 4,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 39,
+          "budget": 52,
+          "forecast": 47
+        },
+        {
+          "month": 4,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 89,
+          "budget": 86,
+          "forecast": 88
+        },
+        {
+          "month": 4,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 47,
+          "budget": 48,
+          "forecast": 49
+        },
+        {
+          "month": 4,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 246,
+          "budget": 240,
+          "forecast": 245
+        },
+        {
+          "month": 4,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 112,
+          "budget": 116,
+          "forecast": 114
+        },
+        {
+          "month": 4,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 87,
+          "budget": 80,
+          "forecast": 87
+        },
+        {
+          "month": 4,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 47,
+          "budget": 44,
+          "forecast": 44
+        },
+        {
+          "month": 4,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 125,
+          "budget": 107,
+          "forecast": 111
+        },
+        {
+          "month": 4,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 43,
+          "budget": 45,
+          "forecast": 40
+        },
+        {
+          "month": 4,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 50,
+          "budget": 38,
+          "forecast": 43
+        },
+        {
+          "month": 4,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 32,
+          "budget": 24,
+          "forecast": 28
+        },
+        {
+          "month": 4,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 879,
+          "budget": 866,
+          "forecast": 873
+        },
+        {
+          "month": 5,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 346,
+          "budget": 328,
+          "forecast": 347
+        },
+        {
+          "month": 5,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 171,
+          "budget": 169,
+          "forecast": 175
+        },
+        {
+          "month": 5,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 101,
+          "budget": 96,
+          "forecast": 102
+        },
+        {
+          "month": 5,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 74,
+          "budget": 63,
+          "forecast": 70
+        },
+        {
+          "month": 5,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 190,
+          "budget": 179,
+          "forecast": 184
+        },
+        {
+          "month": 5,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 43,
+          "budget": 50,
+          "forecast": 45
+        },
+        {
+          "month": 5,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 92,
+          "budget": 84,
+          "forecast": 89
+        },
+        {
+          "month": 5,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 55,
+          "budget": 45,
+          "forecast": 50
+        },
+        {
+          "month": 5,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 244,
+          "budget": 239,
+          "forecast": 249
+        },
+        {
+          "month": 5,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 117,
+          "budget": 116,
+          "forecast": 116
+        },
+        {
+          "month": 5,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 79,
+          "budget": 78,
+          "forecast": 85
+        },
+        {
+          "month": 5,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 48,
+          "budget": 45,
+          "forecast": 48
+        },
+        {
+          "month": 5,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 107,
+          "budget": 109,
+          "forecast": 107
+        },
+        {
+          "month": 5,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 44,
+          "budget": 44,
+          "forecast": 50
+        },
+        {
+          "month": 5,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 41,
+          "budget": 42,
+          "forecast": 39
+        },
+        {
+          "month": 5,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 22,
+          "budget": 23,
+          "forecast": 18
+        },
+        {
+          "month": 5,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 887,
+          "budget": 855,
+          "forecast": 887
+        },
+        {
+          "month": 6,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 332,
+          "budget": 337,
+          "forecast": 330
+        },
+        {
+          "month": 6,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 165,
+          "budget": 171,
+          "forecast": 172
+        },
+        {
+          "month": 6,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 95,
+          "budget": 99,
+          "forecast": 94
+        },
+        {
+          "month": 6,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 72,
+          "budget": 67,
+          "forecast": 64
+        },
+        {
+          "month": 6,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 212,
+          "budget": 189,
+          "forecast": 192
+        },
+        {
+          "month": 6,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 57,
+          "budget": 54,
+          "forecast": 53
+        },
+        {
+          "month": 6,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 103,
+          "budget": 88,
+          "forecast": 95
+        },
+        {
+          "month": 6,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 52,
+          "budget": 47,
+          "forecast": 44
+        },
+        {
+          "month": 6,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 240,
+          "budget": 241,
+          "forecast": 244
+        },
+        {
+          "month": 6,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 108,
+          "budget": 114,
+          "forecast": 111
+        },
+        {
+          "month": 6,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 84,
+          "budget": 81,
+          "forecast": 87
+        },
+        {
+          "month": 6,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 48,
+          "budget": 46,
+          "forecast": 46
+        },
+        {
+          "month": 6,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 121,
+          "budget": 115,
+          "forecast": 123
+        },
+        {
+          "month": 6,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 50,
+          "budget": 48,
+          "forecast": 52
+        },
+        {
+          "month": 6,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 32,
+          "budget": 41,
+          "forecast": 39
+        },
+        {
+          "month": 6,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 39,
+          "budget": 26,
+          "forecast": 32
+        },
+        {
+          "month": 6,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 905,
+          "budget": 882,
+          "forecast": 889
+        },
+        {
+          "month": 7,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 353,
+          "budget": 335,
+          "forecast": 338
+        },
+        {
+          "month": 7,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 180,
+          "budget": 173,
+          "forecast": 173
+        },
+        {
+          "month": 7,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 105,
+          "budget": 98,
+          "forecast": 98
+        },
+        {
+          "month": 7,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 68,
+          "budget": 64,
+          "forecast": 67
+        },
+        {
+          "month": 7,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 205,
+          "budget": 189,
+          "forecast": 196
+        },
+        {
+          "month": 7,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 58,
+          "budget": 51,
+          "forecast": 57
+        },
+        {
+          "month": 7,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 95,
+          "budget": 87,
+          "forecast": 93
+        },
+        {
+          "month": 7,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 52,
+          "budget": 51,
+          "forecast": 46
+        },
+        {
+          "month": 7,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 259,
+          "budget": 249,
+          "forecast": 254
+        },
+        {
+          "month": 7,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 119,
+          "budget": 118,
+          "forecast": 118
+        },
+        {
+          "month": 7,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 92,
+          "budget": 82,
+          "forecast": 89
+        },
+        {
+          "month": 7,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 48,
+          "budget": 49,
+          "forecast": 47
+        },
+        {
+          "month": 7,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 109,
+          "budget": 118,
+          "forecast": 118
+        },
+        {
+          "month": 7,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 40,
+          "budget": 48,
+          "forecast": 48
+        },
+        {
+          "month": 7,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 44,
+          "budget": 43,
+          "forecast": 47
+        },
+        {
+          "month": 7,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 25,
+          "budget": 27,
+          "forecast": 23
+        },
+        {
+          "month": 7,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 926,
+          "budget": 891,
+          "forecast": 906
+        },
+        {
+          "month": 8,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 338,
+          "budget": 337,
+          "forecast": 340
+        },
+        {
+          "month": 8,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 172,
+          "budget": 173,
+          "forecast": 172
+        },
+        {
+          "month": 8,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 106,
+          "budget": 100,
+          "forecast": 105
+        },
+        {
+          "month": 8,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 60,
+          "budget": 64,
+          "forecast": 63
+        },
+        {
+          "month": 8,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 205,
+          "budget": 195,
+          "forecast": 201
+        },
+        {
+          "month": 8,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 61,
+          "budget": 55,
+          "forecast": 61
+        },
+        {
+          "month": 8,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 92,
+          "budget": 90,
+          "forecast": 95
+        },
+        {
+          "month": 8,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 52,
+          "budget": 50,
+          "forecast": 45
+        },
+        {
+          "month": 8,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 261,
+          "budget": 243,
+          "forecast": 256
+        },
+        {
+          "month": 8,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 127,
+          "budget": 115,
+          "forecast": 121
+        },
+        {
+          "month": 8,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 85,
+          "budget": 83,
+          "forecast": 85
+        },
+        {
+          "month": 8,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 49,
+          "budget": 45,
+          "forecast": 50
+        },
+        {
+          "month": 8,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 137,
+          "budget": 120,
+          "forecast": 120
+        },
+        {
+          "month": 8,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 53,
+          "budget": 48,
+          "forecast": 45
+        },
+        {
+          "month": 8,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 52,
+          "budget": 44,
+          "forecast": 48
+        },
+        {
+          "month": 8,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 32,
+          "budget": 28,
+          "forecast": 27
+        },
+        {
+          "month": 8,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 941,
+          "budget": 895,
+          "forecast": 917
+        },
+        {
+          "month": 9,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 335,
+          "budget": 341,
+          "forecast": 335
+        },
+        {
+          "month": 9,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 169,
+          "budget": 173,
+          "forecast": 171
+        },
+        {
+          "month": 9,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 97,
+          "budget": 100,
+          "forecast": 100
+        },
+        {
+          "month": 9,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 69,
+          "budget": 68,
+          "forecast": 64
+        },
+        {
+          "month": 9,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 184,
+          "budget": 195,
+          "forecast": 205
+        },
+        {
+          "month": 9,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 53,
+          "budget": 53,
+          "forecast": 60
+        },
+        {
+          "month": 9,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 87,
+          "budget": 91,
+          "forecast": 94
+        },
+        {
+          "month": 9,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 44,
+          "budget": 51,
+          "forecast": 51
+        },
+        {
+          "month": 9,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 248,
+          "budget": 247,
+          "forecast": 242
+        },
+        {
+          "month": 9,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 119,
+          "budget": 119,
+          "forecast": 118
+        },
+        {
+          "month": 9,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 81,
+          "budget": 81,
+          "forecast": 78
+        },
+        {
+          "month": 9,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 48,
+          "budget": 47,
+          "forecast": 46
+        },
+        {
+          "month": 9,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 134,
+          "budget": 119,
+          "forecast": 122
+        },
+        {
+          "month": 9,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 59,
+          "budget": 47,
+          "forecast": 54
+        },
+        {
+          "month": 9,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 41,
+          "budget": 45,
+          "forecast": 41
+        },
+        {
+          "month": 9,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 34,
+          "budget": 27,
+          "forecast": 27
+        },
+        {
+          "month": 9,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 901,
+          "budget": 902,
+          "forecast": 904
+        },
+        {
+          "month": 10,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 357,
+          "budget": 339,
+          "forecast": 351
+        },
+        {
+          "month": 10,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 174,
+          "budget": 174,
+          "forecast": 173
+        },
+        {
+          "month": 10,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 105,
+          "budget": 100,
+          "forecast": 107
+        },
+        {
+          "month": 10,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 78,
+          "budget": 65,
+          "forecast": 71
+        },
+        {
+          "month": 10,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 210,
+          "budget": 196,
+          "forecast": 205
+        },
+        {
+          "month": 10,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 61,
+          "budget": 56,
+          "forecast": 54
+        },
+        {
+          "month": 10,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 93,
+          "budget": 90,
+          "forecast": 95
+        },
+        {
+          "month": 10,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 56,
+          "budget": 50,
+          "forecast": 56
+        },
+        {
+          "month": 10,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 260,
+          "budget": 251,
+          "forecast": 256
+        },
+        {
+          "month": 10,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 128,
+          "budget": 120,
+          "forecast": 125
+        },
+        {
+          "month": 10,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 78,
+          "budget": 83,
+          "forecast": 84
+        },
+        {
+          "month": 10,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 54,
+          "budget": 48,
+          "forecast": 47
+        },
+        {
+          "month": 10,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 131,
+          "budget": 118,
+          "forecast": 129
+        },
+        {
+          "month": 10,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 50,
+          "budget": 49,
+          "forecast": 47
+        },
+        {
+          "month": 10,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 50,
+          "budget": 42,
+          "forecast": 48
+        },
+        {
+          "month": 10,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 31,
+          "budget": 27,
+          "forecast": 34
+        },
+        {
+          "month": 10,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 958,
+          "budget": 904,
+          "forecast": 941
+        },
+        {
+          "month": 11,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 344,
+          "budget": 344,
+          "forecast": 349
+        },
+        {
+          "month": 11,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 171,
+          "budget": 175,
+          "forecast": 172
+        },
+        {
+          "month": 11,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 99,
+          "budget": 103,
+          "forecast": 104
+        },
+        {
+          "month": 11,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 74,
+          "budget": 66,
+          "forecast": 73
+        },
+        {
+          "month": 11,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 196,
+          "budget": 196,
+          "forecast": 199
+        },
+        {
+          "month": 11,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 45,
+          "budget": 54,
+          "forecast": 49
+        },
+        {
+          "month": 11,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 101,
+          "budget": 92,
+          "forecast": 99
+        },
+        {
+          "month": 11,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 50,
+          "budget": 50,
+          "forecast": 51
+        },
+        {
+          "month": 11,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 259,
+          "budget": 250,
+          "forecast": 254
+        },
+        {
+          "month": 11,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 117,
+          "budget": 119,
+          "forecast": 115
+        },
+        {
+          "month": 11,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 86,
+          "budget": 84,
+          "forecast": 85
+        },
+        {
+          "month": 11,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 56,
+          "budget": 47,
+          "forecast": 54
+        },
+        {
+          "month": 11,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 136,
+          "budget": 121,
+          "forecast": 125
+        },
+        {
+          "month": 11,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 45,
+          "budget": 48,
+          "forecast": 44
+        },
+        {
+          "month": 11,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 52,
+          "budget": 43,
+          "forecast": 46
+        },
+        {
+          "month": 11,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 39,
+          "budget": 30,
+          "forecast": 35
+        },
+        {
+          "month": 11,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 935,
+          "budget": 911,
+          "forecast": 927
+        },
+        {
+          "month": 12,
+          "id": "OPS",
+          "parent": "",
+          "label": "Operations",
+          "level": 0,
+          "order": 0,
+          "actual": 361,
+          "budget": 342,
+          "forecast": 356
+        },
+        {
+          "month": 12,
+          "id": "OPS-A",
+          "parent": "OPS",
+          "label": "Production",
+          "level": 1,
+          "order": 1,
+          "actual": 179,
+          "budget": 175,
+          "forecast": 182
+        },
+        {
+          "month": 12,
+          "id": "OPS-B",
+          "parent": "OPS",
+          "label": "Maintenance",
+          "level": 1,
+          "order": 2,
+          "actual": 105,
+          "budget": 100,
+          "forecast": 102
+        },
+        {
+          "month": 12,
+          "id": "OPS-C",
+          "parent": "OPS",
+          "label": "Logistics",
+          "level": 1,
+          "order": 3,
+          "actual": 77,
+          "budget": 67,
+          "forecast": 72
+        },
+        {
+          "month": 12,
+          "id": "TEC",
+          "parent": "",
+          "label": "Technology",
+          "level": 0,
+          "order": 4,
+          "actual": 221,
+          "budget": 200,
+          "forecast": 210
+        },
+        {
+          "month": 12,
+          "id": "TEC-A",
+          "parent": "TEC",
+          "label": "Analytics",
+          "level": 1,
+          "order": 5,
+          "actual": 62,
+          "budget": 58,
+          "forecast": 62
+        },
+        {
+          "month": 12,
+          "id": "TEC-B",
+          "parent": "TEC",
+          "label": "Engineering",
+          "level": 1,
+          "order": 6,
+          "actual": 99,
+          "budget": 89,
+          "forecast": 96
+        },
+        {
+          "month": 12,
+          "id": "TEC-C",
+          "parent": "TEC",
+          "label": "Platforms",
+          "level": 1,
+          "order": 7,
+          "actual": 60,
+          "budget": 53,
+          "forecast": 52
+        },
+        {
+          "month": 12,
+          "id": "COM",
+          "parent": "",
+          "label": "Commercial",
+          "level": 0,
+          "order": 8,
+          "actual": 228,
+          "budget": 253,
+          "forecast": 248
+        },
+        {
+          "month": 12,
+          "id": "COM-A",
+          "parent": "COM",
+          "label": "Sales",
+          "level": 1,
+          "order": 9,
+          "actual": 109,
+          "budget": 121,
+          "forecast": 117
+        },
+        {
+          "month": 12,
+          "id": "COM-B",
+          "parent": "COM",
+          "label": "Customer care",
+          "level": 1,
+          "order": 10,
+          "actual": 73,
+          "budget": 82,
+          "forecast": 80
+        },
+        {
+          "month": 12,
+          "id": "COM-C",
+          "parent": "COM",
+          "label": "Marketing",
+          "level": 1,
+          "order": 11,
+          "actual": 46,
+          "budget": 50,
+          "forecast": 51
+        },
+        {
+          "month": 12,
+          "id": "COR",
+          "parent": "",
+          "label": "Corporate",
+          "level": 0,
+          "order": 12,
+          "actual": 109,
+          "budget": 123,
+          "forecast": 120
+        },
+        {
+          "month": 12,
+          "id": "COR-A",
+          "parent": "COR",
+          "label": "Finance",
+          "level": 1,
+          "order": 13,
+          "actual": 50,
+          "budget": 51,
+          "forecast": 56
+        },
+        {
+          "month": 12,
+          "id": "COR-B",
+          "parent": "COR",
+          "label": "People",
+          "level": 1,
+          "order": 14,
+          "actual": 44,
+          "budget": 44,
+          "forecast": 41
+        },
+        {
+          "month": 12,
+          "id": "COR-C",
+          "parent": "COR",
+          "label": "Legal",
+          "level": 1,
+          "order": 15,
+          "actual": 15,
+          "budget": 28,
+          "forecast": 23
+        },
+        {
+          "month": 12,
+          "id": "ALL",
+          "parent": "",
+          "label": "All departments",
+          "level": -1,
+          "order": -1,
+          "actual": 919,
+          "budget": 918,
+          "forecast": 934
+        }
+      ]
+    },
+    {
+      "name": "months",
+      "values": [
+        {
+          "month": 1,
+          "label": "Jan"
+        },
+        {
+          "month": 2,
+          "label": "Feb"
+        },
+        {
+          "month": 3,
+          "label": "Mar"
+        },
+        {
+          "month": 4,
+          "label": "Apr"
+        },
+        {
+          "month": 5,
+          "label": "May"
+        },
+        {
+          "month": 6,
+          "label": "Jun"
+        },
+        {
+          "month": 7,
+          "label": "Jul"
+        },
+        {
+          "month": 8,
+          "label": "Aug"
+        },
+        {
+          "month": 9,
+          "label": "Sep"
+        },
+        {
+          "month": 10,
+          "label": "Oct"
+        },
+        {
+          "month": 11,
+          "label": "Nov"
+        },
+        {
+          "month": 12,
+          "label": "Dec"
+        }
+      ]
+    },
+    {
+      "name": "scenarios",
+      "values": [
+        {
+          "key": "budget",
+          "label": "Budget",
+          "i": 0
+        },
+        {
+          "key": "forecast",
+          "label": "Forecast",
+          "i": 1
+        }
+      ]
+    },
+    {
+      "name": "visible",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.month===month && (datum.level===0 || (datum.level===1 && datum.parent===expanded))"
+        },
+        {
+          "type": "formula",
+          "as": "plan",
+          "expr": "datum[scenario]"
+        },
+        {
+          "type": "formula",
+          "as": "delta",
+          "expr": "datum.actual-datum.plan"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "order",
+            "order": "ascending"
+          }
+        },
+        {
+          "type": "window",
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "row"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parents",
+      "source": "visible",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.level===0"
+        }
+      ]
+    },
+    {
+      "name": "trend",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.id===selected"
+        },
+        {
+          "type": "formula",
+          "as": "plan",
+          "expr": "datum[scenario]"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "month",
+            "order": "ascending"
+          }
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "bar",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {
+            "data": "visible",
+            "field": "actual"
+          },
+          {
+            "data": "visible",
+            "field": "plan"
+          }
+        ]
+      },
+      "range": [
+        0,
+        290
+      ],
+      "zero": true,
+      "nice": true
+    },
+    {
+      "name": "monthX",
+      "type": "linear",
+      "domain": [
+        1,
+        12
+      ],
+      "range": [
+        39,
+        878
+      ]
+    },
+    {
+      "name": "trendY",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {
+            "data": "trend",
+            "field": "actual"
+          },
+          {
+            "data": "trend",
+            "field": "plan"
+          }
+        ]
+      },
+      "range": [
+        580,
+        450
+      ],
+      "zero": false,
+      "nice": true
+    }
+  ],
+  "marks": [
+    {
+      "name": "caption",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 18
+          },
+          "y": {
+            "value": 14
+          },
+          "text": {
+            "value": "MONTH"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "monthChip",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "79+(datum.month-1)*47"
+          },
+          "y": {
+            "value": 1
+          },
+          "width": {
+            "value": 42
+          },
+          "height": {
+            "value": 29
+          },
+          "fill": {
+            "signal": "month===datum.month ? '#176B76' : '#EDF3F7'"
+          },
+          "cornerRadius": {
+            "value": 7
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "months"
+      }
+    },
+    {
+      "name": "monthLabel",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "100+(datum.month-1)*47"
+          },
+          "y": {
+            "value": 15
+          },
+          "text": {
+            "field": "label"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "signal": "month===datum.month?'#ffffff':'#36516A'"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fillOpacity": {
+            "value": 1
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "months"
+      }
+    },
+    {
+      "name": "scenarioCaption",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 661
+          },
+          "y": {
+            "value": 15
+          },
+          "text": {
+            "value": "PLAN"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "scenarioChip",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "705+datum.i*99"
+          },
+          "y": {
+            "value": 1
+          },
+          "width": {
+            "value": 94
+          },
+          "height": {
+            "value": 29
+          },
+          "fill": {
+            "signal": "scenario===datum.key ? '#176B76' : '#EDF3F7'"
+          },
+          "cornerRadius": {
+            "value": 7
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "scenarios"
+      }
+    },
+    {
+      "name": "scenarioLabel",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "752+datum.i*99"
+          },
+          "y": {
+            "value": 15
+          },
+          "text": {
+            "field": "label"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "signal": "scenario===datum.key?'#ffffff':'#36516A'"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "scenarios"
+      }
+    },
+    {
+      "name": "headTitle",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 24
+          },
+          "y": {
+            "value": 76
+          },
+          "text": {
+            "value": "Department / team"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "headActual",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 650
+          },
+          "y": {
+            "value": 76
+          },
+          "text": {
+            "value": "Actual"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "headPlan",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 743
+          },
+          "y": {
+            "value": 76
+          },
+          "text": {
+            "signal": "scenario==='budget'?'Budget':'Forecast'"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "headDelta",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 875
+          },
+          "y": {
+            "value": 76
+          },
+          "text": {
+            "value": "Δ headcount"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "rowFill",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 12
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37"
+          },
+          "width": {
+            "value": 890
+          },
+          "height": {
+            "value": 34
+          },
+          "fill": {
+            "signal": "selected===datum.id ? '#D9F2ED' : datum.level===0 ? '#F0F5F8' : '#ffffff'"
+          },
+          "cornerRadius": {
+            "value": 4
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "toggle",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 25
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+17"
+          },
+          "text": {
+            "signal": "datum.level===0 ? (expanded===datum.id?'▾':'▸') : ''"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#172A43"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "rowLabel",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.level===0?44:64"
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+17"
+          },
+          "text": {
+            "field": "label"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#172A43"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "planBar",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 290
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+6"
+          },
+          "width": {
+            "signal": "scale('bar',datum.plan)"
+          },
+          "height": {
+            "value": 8
+          },
+          "fill": {
+            "value": "#B9CDDD"
+          },
+          "cornerRadius": {
+            "value": 2
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "actualBar",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 290
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+18"
+          },
+          "width": {
+            "signal": "scale('bar',datum.actual)"
+          },
+          "height": {
+            "value": 8
+          },
+          "fill": {
+            "value": "#087B76"
+          },
+          "cornerRadius": {
+            "value": 2
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "actNum",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 650
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+17"
+          },
+          "text": {
+            "signal": "format(datum.actual,',d')"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#172A43"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "planNum",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 743
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+17"
+          },
+          "text": {
+            "signal": "format(datum.plan,',d')"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 400
+          },
+          "fill": {
+            "value": "#172A43"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "delta",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 875
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37+17"
+          },
+          "text": {
+            "signal": "(datum.delta>0?'+':'')+format(datum.delta,',d')"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "signal": "datum.delta>0?'#B53E58':datum.delta<0?'#087B67':'#52667C'"
+          },
+          "font": {
+            "value": "Poppins"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "rowHit",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 40
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37"
+          },
+          "width": {
+            "value": 860
+          },
+          "height": {
+            "value": 34
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'Team':datum.label,'Actual':datum.actual,'Plan':datum.plan,'Difference':datum.delta}"
+          }
+        }
+      },
+      "from": {
+        "data": "visible"
+      }
+    },
+    {
+      "name": "toggleHit",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 12
+          },
+          "y": {
+            "signal": "98 + (datum.row-1)*37"
+          },
+          "width": {
+            "value": 28
+          },
+          "height": {
+            "value": 34
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "parents"
+      }
+    },
+    {
+      "name": "rule",
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 12
+          },
+          "x2": {
+            "value": 902
+          },
+          "y": {
+            "value": 372
+          },
+          "stroke": {
+            "value": "#DCE5EE"
+          }
+        }
+      }
+    },
+    {
+      "name": "trendLabel",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 18
+          },
+          "y": {
+            "value": 399
+          },
+          "text": {
+            "signal": "'Monthly evolution · '+(selected==='ALL'?'All departments':data('trend')[0].label)"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 17
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#172A43"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "reset",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 895
+          },
+          "y": {
+            "value": 399
+          },
+          "text": {
+            "value": "Reset selection"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#176B76"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      }
+    },
+    {
+      "name": "legendActual",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 18
+          },
+          "y": {
+            "value": 420
+          },
+          "width": {
+            "value": 12
+          },
+          "height": {
+            "value": 8
+          },
+          "fill": {
+            "value": "#087B76"
+          }
+        }
+      }
+    },
+    {
+      "name": "legendA",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 36
+          },
+          "y": {
+            "value": 424
+          },
+          "text": {
+            "value": "Actual"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 400
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "legendPlan",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 101
+          },
+          "y": {
+            "value": 420
+          },
+          "width": {
+            "value": 12
+          },
+          "height": {
+            "value": 8
+          },
+          "fill": {
+            "value": "#B9CDDD"
+          }
+        }
+      }
+    },
+    {
+      "name": "legendP",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 119
+          },
+          "y": {
+            "value": 424
+          },
+          "text": {
+            "signal": "scenario==='budget'?'Budget':'Forecast'"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 400
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "name": "monthFocus",
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('monthX',month)"
+          },
+          "y": {
+            "value": 447
+          },
+          "y2": {
+            "value": 580
+          },
+          "stroke": {
+            "value": "#A0B1C4"
+          },
+          "strokeDash": {
+            "value": [
+              4,
+              4
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "planTrend",
+      "type": "line",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "monthX",
+            "field": "month"
+          },
+          "y": {
+            "scale": "trendY",
+            "field": "plan"
+          },
+          "stroke": {
+            "value": "#7B8CA3"
+          },
+          "strokeWidth": {
+            "value": 2
+          },
+          "strokeDash": {
+            "value": [
+              5,
+              3
+            ]
+          }
+        }
+      },
+      "from": {
+        "data": "trend"
+      }
+    },
+    {
+      "name": "actualTrend",
+      "type": "line",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "monthX",
+            "field": "month"
+          },
+          "y": {
+            "scale": "trendY",
+            "field": "actual"
+          },
+          "stroke": {
+            "value": "#087B76"
+          },
+          "strokeWidth": {
+            "value": 2.5
+          }
+        }
+      },
+      "from": {
+        "data": "trend"
+      }
+    },
+    {
+      "name": "points",
+      "type": "symbol",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "monthX",
+            "field": "month"
+          },
+          "y": {
+            "scale": "trendY",
+            "field": "actual"
+          },
+          "size": {
+            "signal": "datum.month===month?95:40"
+          },
+          "fill": {
+            "value": "#087B76"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "tooltip": {
+            "signal": "{'Month':datum.month,'Actual':datum.actual,'Plan':datum.plan}"
+          }
+        }
+      },
+      "from": {
+        "data": "trend"
+      }
+    },
+    {
+      "name": "trendMonths",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "monthX",
+            "field": "month"
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "field": "label"
+          },
+          "font": {
+            "value": "Poppins"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 400
+          },
+          "fill": {
+            "value": "#52667C"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      },
+      "from": {
+        "data": "months"
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "Poppins"
+    },
+    "axis": {
+      "labelFont": "Poppins",
+      "titleFont": "Poppins",
+      "labelColor": "#52667C",
+      "titleColor": "#172A43",
+      "domainColor": "#DCE5EE",
+      "tickColor": "#DCE5EE",
+      "gridColor": "#EAF1F6"
+    },
+    "legend": {
+      "labelFont": "Poppins",
+      "titleFont": "Poppins"
+    },
+    "title": {
+      "font": "Poppins",
+      "color": "#172A43"
+    }
+  }
+}
